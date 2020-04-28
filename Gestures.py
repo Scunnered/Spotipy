@@ -4,6 +4,9 @@
 
 import os #https://docs.python.org/3/library/os.html - This module provides a portable way of using operating system dependent functionality.
 import glob #https://docs.python.org/2/library/glob.html - The glob module finds all the pathnames matching a specified pattern according to the rules used by the Unix shell, although results are returned in arbitrary order.
+import spotipy
+import spotipy.oauth2 as oauth2
+import spotipy.util as util
 import subprocess #https://docs.python.org/2/library/subprocess.html - Spawn new processes to connect to their input/output/error pipe and obtain their return codes.
 import RPi.GPIO as GPIO #https://sourceforge.net/p/raspberry-gpio-python/wiki/BasicUsage/ - By doing it this way, you can refer to it as just GPIO through the rest of your script.
 import time #https://docs.python.org/3/library/time.html - This module provides various time-related functions. For related functionality, see also the datetime and calendar modules.
@@ -11,16 +14,6 @@ from time import sleep #https://www.journaldev.com/15797/python-time-sleep - Pyt
 
 TRIGGER = 4
 ECHO = 22
-LED1 = 14
-LED2 = 15
-LED3 = 18
-LED4 = 23
-LED5 = 24
-LED6 = 25
-LED7 = 8
-LED8 = 7
-LED9 = 12
-LED10 = 16
 LEFT_SENSOR=27
 RIGHT_SENSOR=17
 
@@ -31,18 +24,7 @@ GPIO.setup(RIGHT_SENSOR,GPIO.IN)
 GPIO.setup(TRIGGER,GPIO.OUT)
 GPIO.setup(ECHO,GPIO.IN)
 
-GPIO.setup(LED1,GPIO.OUT)
-GPIO.setup(LED2,GPIO.OUT)
-GPIO.setup(LED3,GPIO.OUT)
-GPIO.setup(LED4,GPIO.OUT)
-GPIO.setup(LED5,GPIO.OUT)
-GPIO.setup(LED6,GPIO.OUT)
-GPIO.setup(LED7,GPIO.OUT)
-GPIO.setup(LED8,GPIO.OUT)
-GPIO.setup(LED9,GPIO.OUT)
-GPIO.setup(LED10,GPIO.OUT)
-
-os.chdir('/home/pi/Music')
+os.chdir('/home/etc/default/raspotify')
 f = glob.glob('*mp3')
 h = len(f)
 status = 1
@@ -90,7 +72,7 @@ if __name__=='__main__':
             dist = int(distance())
             
             if(status==1):
-                player = subprocess.Popen(["omxplayer",f[pointer]],stdin=subprocess.PIPE)
+                player = subprocess.Popen(["Spotipy music player",f[pointer]],stdin=subprocess.PIPE)
                 fi = player.poll()
                 status = 0
                 start = 0
@@ -166,7 +148,7 @@ if __name__=='__main__':
                 sleep(0.1)
                 
     except KeyboardInterrupt:
-            print("Stopped by user")
+            print("Stopped")
             GPIO.cleanup()
         
         

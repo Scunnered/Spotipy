@@ -79,6 +79,7 @@ Now everything is ready, and we can make our speakers ready!
 If your speakers are already connected to an amplifier that has an AUX port, you should join an aux cable from the Raspberry Pi to the amp and disconnect the peripherals from the Raspberry Pi. Everything should work right now! Make sure you don't disconnect the Power Cable and Ethernet Cable (only when you are not connected via Wifi) as well as the AUX cable. You should have kind of the same connections as in the image below, and now you are finished. An aux adapter is needed for the host if you want to output the audio without headphones
 
 # Python Scripts used in project
+A quick run down of all the scripts used in the project.
 
 # Gestures.py
 Gestures is a python script that allows users to interact with the HC-SR04 Ultrasonic Sensor on the breadboard. This relates to the python script “Gestures”. Users can use their hand to control the music. The script imports OS, glob, subprocess, RPi.GPIO, spotipy, spotipy.oauth2, spotiy.util and time. 

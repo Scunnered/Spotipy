@@ -1,10 +1,10 @@
 # cm2110-coursework-2-submissoin-activated-almonds
 cm2110-coursework-2-submissoin-activated-almonds created by GitHub Classroom
 
-#Spotipy
-#A sonos like system that runs on Raspotify
+# Spotipy
+A sonos like system that runs on Raspotify
 
-#Downloading the OS
+# Downloading the OS
 Raspian can be installed from this website. We must install "Raspbian Buster with desktop and recommended software". Now click on "Download ZIP", and the download should start. (this can take a couple of minutes depending on your ethernet connection)
 Step 2: Writing the image to the SD card
 Now you will need to download & install the software that will write the image to the SD card. A good one to use is called Etcher, and it works on all platforms (Linux, Mac, and Windows). You're able to download it from over at their website.
@@ -17,12 +17,13 @@ Now you will need to download & install the software that will write the image t
 7. Insert the SD card into your Raspberry Pi and any other extra cords such as power, mouse, keyboard, and the HDMI cord.
 8. Now you will be guided through the setup process. Make sure you don't forget to connect to the Ethernet because Spotify Connect is based on the Ethernet. The setup process is pretty straight forward, so it shouldn't be a problem.
 
-#VLC
+# VLC
 VLC is needed for this. To install run the following command:
 sudo apt-get install vlc
 The audio for this project is run via CVLC
 Installing Raspotify on the Rasberry Pi
 Raspotify is a Spotify Connect client for Raspbian on the Raspberry Pi that Just Works™. Raspotify is a Debian package and associated repository which thinly wraps the awesome "librespot" library by Paul Lietar and others. It works out of the box on all three revisions of the Pi, immediately after installation.
+
 The install itself is as easy as it gets, follows the following steps, and you'll be up and running in 5 minutes.
 Open the Terminal using the shortcut "CTRL + ALT + T"
 Type in the Terminal the following and hit enter afterwards. This command downloads and installs the Debian package and adds its apt repository, which ensures you'll always be up to date with upstream changes.
@@ -34,7 +35,7 @@ What you've opened is the Raspotify config file. Within this file, you will see 
 To change the device name, we will have to uncomment the line first. This can be done by hitting the delete key, your text of that line will now become white. Now we can pick a name that will be displayed in Spotify.
 
 
-#For example:
+# For example:
 DEVICE_NAME="LivingRoom"
 After we've changed our name, we will revise the Bitrate. This will give us a little bit better audio quality.
 Uncomment the line and replace 160 by 320.
@@ -74,12 +75,12 @@ Give it a quick check like we did in step 3 and look whether the name has change
 Now everything is ready, and we can make our speakers ready!
  
 
-#Connecting Pre-amped Speakers
+# Connecting Pre-amped Speakers
 If your speakers are already connected to an amplifier that has an AUX port, you should join an aux cable from the Raspberry Pi to the amp and disconnect the peripherals from the Raspberry Pi. Everything should work right now! Make sure you don't disconnect the Power Cable and Ethernet Cable (only when you are not connected via Wifi) as well as the AUX cable. You should have kind of the same connections as in the image below, and now you are finished. An aux adapter is needed for the host if you want to output the audio without headphones
 
-#Python Scripts used in project
+# Python Scripts used in project
 
-#Gestures.py
+# Gestures.py
 Gestures is a python script that allows users to interact with the HC-SR04 Ultrasonic Sensor on the breadboard. This relates to the python script “Gestures”. Users can use their hand to control the music. The script imports OS, glob, subprocess, RPi.GPIO, spotipy, spotipy.oauth2, spotiy.util and time. 
 Then the user waves their hand from left to right. It will skip a track, vice versa will play the previous track. Holding a hand close to the sensor will mute it and distancing the hand upwards will increase the volume.  
 The script pulls in from the local connection os.chdir('/home/etc/default/raspotify') 
@@ -88,30 +89,30 @@ and streams out mp3 from the glob.glob list.
 Subprocess is currently listed as "Spotipy music player"
 (Currently not in use due to hardware limitations (needs resistor). Replacing this with JoyStickControl.py including to show team workings)
 
-#JoyStickControl.py
+# JoyStickControl.py
 JoyStickControl imports confiqparser from sense_hat import SenseHat. This script will run with Raspotify and will display things like artist, Album, Song title, pause and resume on the sense hat. Once the song has been changed this script will reflect this via the senseHat. The joystick on the pi will make changes to the sensehat/track. Up will change the mode (artist, album artist) down shows current mode result, right is next track left previous track press in is play / pause on toggle
 
-#SpotipyTest.py
+# SpotipyTest.py
 SpotipyTest is a python script that allows track information to be displayed on the SenseHat. It import configparser, import spotipy, import spotipy.oauth2 as oauth2 and import spotipy.util as util
  
-#Bluetooth.PY
+# Bluetooth.PY
 Bluetooth.py is a python script that creates a proximity-based range that connects the speaker and pi with a user’s Bluetooth Its imports fcntl, struct, array, bluetooth (which is referred to as bt), RPI.GPIO (which is referred to as GPIO), time, os and datetime.
 The script opens the HCI socket and attempts to connect to a bluetooth device. Each pi will have this function and when a user is closer to a pi the pi should play from the pi’s connected speakers. Set to a max range of 255. 
 
-#MyqtthubSubcribe.py
+# MyqtthubSubcribe.py
 Gets data
 
-#MyqtthubPublish.py
+# MyqtthubPublish.py
 Sends data
 
-#Client.py
+# Client.py
 Client imports Spotipy =, json, time, ssl, os and threading. It pulls in info from MyQTThub. For the demo we have given each client a different set bluetooth range for the video. It uses the sense hat to display info on the current track playing. It uses VLC.  There are multiple clients depending on how many speakers the user wants to output to. There is also Client 1 and 2
 
-#Confiq.py
+# Confiq.py
 Script is simple. Gives client ID, Secret and URL for local host
 
-#Host.py
+# Host.py
 Host imports Spotipy, Json, time, ssl, threading and os. Host is used for the main pi that will act as “host” for the other pis set up around the home
 
-#SpotipyTest.py
+# SpotipyTest.py
 This was for testing only. We have added it onto the git to show our working

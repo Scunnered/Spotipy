@@ -1,8 +1,6 @@
-# cm2110-coursework-2-submissoin-activated-almonds
-cm2110-coursework-2-submissoin-activated-almonds created by GitHub Classroom
-
 # Spotipy
 A sonos like system that runs on Raspotify
+https://youtu.be/wJX0SQMQN2o
 
 # Downloading the OS
 Raspian can be installed from this website. We must install "Raspbian Buster with desktop and recommended software". Now click on "Download ZIP", and the download should start. (this can take a couple of minutes depending on your ethernet connection)
